@@ -43,8 +43,14 @@ class MainActivity : ComponentActivity() {
     private fun fetchWeather(city: String, apiKey: String, callback: (String) -> Unit) {
         weatherService.getWeather(city, apiKey).enqueue(object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>, response: Response<WeatherResponse>) {
-                if (response.isSuccessful && response.body() != null) {
-                val temperature = response.body()!!.main.temp
+                if (response.isSuccessful) {
+                response.body()?.let { weatherResponse ->
+                    val temperature = weatherResponse.main.temp
+                    callback(temperature.toString())
+                    val description = weatherResponse.weather[0].description
+                    println("Temperature: $temperature")
+                    println("Weather description: $description")
+                }
             }
 
             }
@@ -59,6 +65,8 @@ class MainActivity : ComponentActivity() {
         )
     }
 }
+
+private fun MainActivity.Greeting(name: String, modifier: Modifier) {}
 
 
 /**  response.body()?.main?.temp?.let {
