@@ -44,6 +44,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)  // ViewModel dependency
+    implementation(libs.androidx.lifecycle.livedata.ktx)  // LiveData dependency (if you use it)
+    implementation(libs.androidx.lifecycle.runtime.ktx.v287)
     implementation(libs.converter.gson)
     implementation(libs.retrofit2.retrofit)
     implementation(libs.androidx.core.ktx)
