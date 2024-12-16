@@ -38,14 +38,17 @@ android {
         compose = true
     }
 
-    buildFeatures {
-        viewBinding = true
-    }
+
 }
 
 dependencies {
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)  // ViewModel dependency
-    implementation(libs.androidx.lifecycle.livedata.ktx)  // LiveData dependency (if you use it)
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation (libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx.v287)
     implementation(libs.converter.gson)
     implementation(libs.retrofit2.retrofit)
